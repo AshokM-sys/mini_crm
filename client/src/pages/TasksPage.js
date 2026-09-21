@@ -29,7 +29,6 @@ const TasksPage = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Add Task Modal
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
@@ -41,7 +40,6 @@ const TasksPage = () => {
   const [formErrors, setFormErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
 
-  // References for dropdowns
   const [leadsList, setLeadsList] = useState([]);
   const [usersList, setUsersList] = useState([]);
 
@@ -120,7 +118,6 @@ const TasksPage = () => {
     }
   };
 
-  // Toggle Task Status (Mandatory: Only assigned user can update status)
   const handleToggleStatus = async (task) => {
     const newStatus = task.status === 'Completed' ? 'Pending' : 'Completed';
 
@@ -137,7 +134,6 @@ const TasksPage = () => {
     }
   };
 
-  // Format date like wireframe: "22 Jan"
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
@@ -149,7 +145,6 @@ const TasksPage = () => {
 
   return (
     <Box>
-      {/* Title matching Wireframe 7 */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5 }}>
         <Typography variant="h5" sx={{ fontWeight: 700, color: '#0f172a' }}>
           Tasks
@@ -163,11 +158,10 @@ const TasksPage = () => {
             '&:hover': { backgroundColor: '#1d4ed8' },
           }}
         >
-          + Add Task
+          Add Task
         </Button>
       </Box>
 
-      {/* Wireframe 7 Table: Title | Lead | Due Date | Status | Actions */}
       <Card sx={{ p: 2.5, border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
         <TableContainer>
           <Table>
@@ -195,7 +189,6 @@ const TasksPage = () => {
                 </TableRow>
               ) : (
                 tasks.map((task) => {
-                  // Check if current logged-in user is the assigned user
                   const isAssigned =
                     user &&
                     task.assignedTo &&
@@ -226,7 +219,6 @@ const TasksPage = () => {
                           }}
                         />
                       </TableCell>
-                      {/* Actions matching wireframe: [ Done ] */}
                       <TableCell align="center">
                         {isAssigned ? (
                           <Button

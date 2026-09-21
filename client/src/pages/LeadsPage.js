@@ -43,11 +43,9 @@ const LeadsPage = () => {
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
 
-  // Dropdown reference data
   const [users, setUsers] = useState([]);
   const [companies, setCompanies] = useState([]);
 
-  // Add / Edit Lead Dialog State (Wireframe 5)
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingLeadId, setEditingLeadId] = useState(null);
   const [formData, setFormData] = useState({
@@ -61,7 +59,6 @@ const LeadsPage = () => {
   const [formErrors, setFormErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
 
-  // Soft Delete Confirmation Dialog
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [leadToDelete, setLeadToDelete] = useState(null);
 
@@ -199,7 +196,6 @@ const LeadsPage = () => {
 
   return (
     <Box>
-      {/* Title matching Wireframe 4 */}
       <Box sx={{ mb: 2.5 }}>
         <Typography variant="h5" sx={{ fontWeight: 700, color: '#0f172a' }}>
           Leads
@@ -207,7 +203,6 @@ const LeadsPage = () => {
       </Box>
 
       <Card sx={{ p: 2.5, border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-        {/* Toolbar matching Wireframe 4: Search [_____] Status [Dropdown] [+ Add Lead] */}
         <Box
           sx={{
             display: 'flex',
@@ -265,11 +260,10 @@ const LeadsPage = () => {
               '&:hover': { backgroundColor: '#1d4ed8' },
             }}
           >
-            + Add Lead
+            Add Lead
           </Button>
         </Box>
 
-        {/* Table exactly matching Wireframe 4: Name | Email | Status | Assigned To | Actions */}
         <TableContainer>
           <Table>
             <TableHead>
@@ -316,7 +310,6 @@ const LeadsPage = () => {
                     <TableCell sx={{ color: '#475569' }}>
                       {lead.assignedTo?.name || 'Unassigned'}
                     </TableCell>
-                    {/* Actions matching wireframe: Edit | Delete */}
                     <TableCell align="center">
                       <Button
                         size="small"
@@ -359,7 +352,6 @@ const LeadsPage = () => {
           </Table>
         </TableContainer>
 
-        {/* Pagination matching wireframe: < 1 2 3 > */}
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, pt: 1 }}>
           <Pagination
             count={totalPages}
@@ -371,7 +363,6 @@ const LeadsPage = () => {
         </Box>
       </Card>
 
-      {/* Wireframe 5: Add / Edit Lead Dialog */}
       <Dialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
@@ -467,7 +458,6 @@ const LeadsPage = () => {
             </TextField>
           </Box>
         </DialogContent>
-        {/* Buttons matching Wireframe 5: [ Save ] [ Cancel ] */}
         <DialogActions sx={{ px: 3, py: 2 }}>
           <Button
             onClick={() => setDialogOpen(false)}
@@ -488,7 +478,6 @@ const LeadsPage = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Delete Confirmation Dialog */}
       <Dialog
         open={deleteConfirmOpen}
         onClose={() => setDeleteConfirmOpen(false)}

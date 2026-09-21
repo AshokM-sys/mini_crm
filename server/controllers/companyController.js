@@ -1,9 +1,7 @@
 const Company = require('../models/Company');
 const Lead = require('../models/Lead');
 
-// @desc    Get all companies
-// @route   GET /api/companies
-// @access  Private
+//get all companies
 const getCompanies = async (req, res) => {
   try {
     const companies = await Company.find().sort({ createdAt: -1 });
@@ -14,9 +12,7 @@ const getCompanies = async (req, res) => {
   }
 };
 
-// @desc    Get single company details and its associated leads
-// @route   GET /api/companies/:id
-// @access  Private
+//get single company by Id
 const getCompanyById = async (req, res) => {
   try {
     const company = await Company.findById(req.params.id);
@@ -41,9 +37,7 @@ const getCompanyById = async (req, res) => {
   }
 };
 
-// @desc    Create a new company
-// @route   POST /api/companies
-// @access  Private
+//create new company
 const createCompany = async (req, res) => {
   try {
     const { name, industry, location } = req.body;

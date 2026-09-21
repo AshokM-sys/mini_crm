@@ -79,7 +79,6 @@ const LoginPage = () => {
         }}
       >
         <CardContent sx={{ p: 2 }}>
-          {/* Header matching Wireframe 1 */}
           <Box sx={{ textAlign: 'center', mb: 3 }}>
             <Typography
               variant="h5"
@@ -96,7 +95,6 @@ const LoginPage = () => {
             </Typography>
           </Box>
 
-          {/* Show API error messages matching Wireframe 1 */}
           {apiError && (
             <Alert severity="error" sx={{ mb: 2.5, borderRadius: 1.5 }}>
               {apiError}
@@ -104,7 +102,6 @@ const LoginPage = () => {
           )}
 
           <Box component="form" onSubmit={handleLogin} noValidate>
-            {/* Email Field */}
             <Box sx={{ mb: 2 }}>
               <Typography
                 variant="body2"

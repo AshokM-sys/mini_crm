@@ -1,8 +1,6 @@
 const Task = require('../models/Task');
 
-// @desc    Get all tasks
-// @route   GET /api/tasks
-// @access  Private
+//get all tasks
 const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find()
@@ -17,9 +15,7 @@ const getTasks = async (req, res) => {
   }
 };
 
-// @desc    Create a new task
-// @route   POST /api/tasks
-// @access  Private
+//create new task
 const createTask = async (req, res) => {
   try {
     const { title, lead, assignedTo, dueDate, status } = req.body;
@@ -47,9 +43,7 @@ const createTask = async (req, res) => {
   }
 };
 
-// @desc    Update task status (Strict Rule: Only assigned user can update)
-// @route   PATCH /api/tasks/:id/status
-// @access  Private
+//update task status
 const updateTaskStatus = async (req, res) => {
   try {
     const { status } = req.body;
@@ -64,8 +58,6 @@ const updateTaskStatus = async (req, res) => {
       return res.status(404).json({ message: 'Task not found' });
     }
 
-    // MANDATORY AUTHORIZATION CHECK:
-    // Only the user assigned to this task is permitted to update its status
     if (task.assignedTo.toString() !== req.user._id.toString()) {
       return res.status(403).json({
         message: 'Forbidden: Only the assigned user is authorized to update the status of this task.',

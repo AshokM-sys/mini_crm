@@ -1,8 +1,6 @@
 const Lead = require('../models/Lead');
 
-// @desc    Get all leads with pagination, search, and filtering (excluding soft-deleted)
-// @route   GET /api/leads
-// @access  Private
+//get all the leads
 const getLeads = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -12,17 +10,17 @@ const getLeads = async (req, res) => {
     const searchQuery = req.query.search || '';
     const statusFilter = req.query.status || '';
 
-    // Base query: Must not be soft-deleted
+    // Not deleted
     const filterConditions = {
       isDeleted: false,
     };
 
-    // Filter by status if provided and not 'All'
+    // got filtered
     if (statusFilter && statusFilter !== 'All') {
       filterConditions.status = statusFilter;
     }
 
-    // Search by name, email, or phone
+    // Search
     if (searchQuery) {
       filterConditions.$or = [
         { name: { $regex: searchQuery, $options: 'i' } },
@@ -31,7 +29,7 @@ const getLeads = async (req, res) => {
       ];
     }
 
-    // Fetch leads and total count in parallel
+    // fetched the leads and total count in parallel
     const [leads, total] = await Promise.all([
       Lead.find(filterConditions)
         .populate('assignedTo', 'name email')
@@ -56,9 +54,7 @@ const getLeads = async (req, res) => {
   }
 };
 
-// @desc    Get single lead by ID
-// @route   GET /api/leads/:id
-// @access  Private
+//get single lead by Id
 const getLeadById = async (req, res) => {
   try {
     const lead = await Lead.findOne({ _id: req.params.id, isDeleted: false })
@@ -76,9 +72,7 @@ const getLeadById = async (req, res) => {
   }
 };
 
-// @desc    Create a new lead
-// @route   POST /api/leads
-// @access  Private
+//create new lead
 const createLead = async (req, res) => {
   try {
     const { name, email, phone, status, assignedTo, company } = req.body;
@@ -107,9 +101,7 @@ const createLead = async (req, res) => {
   }
 };
 
-// @desc    Update an existing lead
-// @route   PUT /api/leads/:id
-// @access  Private
+//update lead
 const updateLead = async (req, res) => {
   try {
     const lead = await Lead.findOne({ _id: req.params.id, isDeleted: false });
@@ -140,9 +132,7 @@ const updateLead = async (req, res) => {
   }
 };
 
-// @desc    Soft delete a lead (must not appear in normal queries)
-// @route   DELETE /api/leads/:id
-// @access  Private
+//soft delete the lead
 const deleteLead = async (req, res) => {
   try {
     const lead = await Lead.findOne({ _id: req.params.id, isDeleted: false });
@@ -151,7 +141,6 @@ const deleteLead = async (req, res) => {
       return res.status(404).json({ message: 'Lead not found' });
     }
 
-    // Perform soft delete
     lead.isDeleted = true;
     await lead.save();
 

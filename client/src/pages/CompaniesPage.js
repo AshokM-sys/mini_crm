@@ -34,7 +34,6 @@ const CompaniesPage = () => {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Add Company Modal
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -44,7 +43,6 @@ const CompaniesPage = () => {
   const [formErrors, setFormErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
 
-  // Company Details Modal (Wireframe 6)
   const [detailDialogOpen, setDetailDialogOpen] = useState(false);
   const [selectedCompanyData, setSelectedCompanyData] = useState(null);
   const [loadingDetails, setLoadingDetails] = useState(false);
@@ -118,7 +116,6 @@ const CompaniesPage = () => {
 
   return (
     <Box>
-      {/* Title matching Wireframe 6 */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5 }}>
         <Typography variant="h5" sx={{ fontWeight: 700, color: '#0f172a' }}>
           Companies
@@ -132,11 +129,10 @@ const CompaniesPage = () => {
             '&:hover': { backgroundColor: '#1d4ed8' },
           }}
         >
-          + Add Company
+          Add Company
         </Button>
       </Box>
 
-      {/* Wireframe 6: Table: Company Name | Industry | Location */}
       <Card sx={{ p: 2.5, border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
         <TableContainer>
           <Table>
@@ -255,7 +251,6 @@ const CompaniesPage = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Wireframe 6: Company Detail & Associated Leads Modal */}
       <Dialog
         open={detailDialogOpen}
         onClose={() => setDetailDialogOpen(false)}
@@ -271,7 +266,6 @@ const CompaniesPage = () => {
             </Box>
           ) : (
             <Box>
-              {/* Company Info Box */}
               <Box
                 sx={{
                   p: 2,
@@ -309,7 +303,6 @@ const CompaniesPage = () => {
                 </Grid>
               </Box>
 
-              {/* Associated Leads List matching Wireframe 6 */}
               <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#0f172a', mb: 1.5 }}>
                 Associated Leads ({selectedCompanyData.leads.length})
               </Typography>

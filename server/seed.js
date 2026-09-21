@@ -44,46 +44,46 @@ const seedData = async () => {
     console.log('Creating sample companies...');
     const companies = await Company.create([
       {
-        name: 'ABC Corp',
+        name: 'Iaaxin Tech Labs',
+        industry: 'IT',
+        location: 'Karur',
+      },
+      {
+        name: 'Tata Consultancy Services',
         industry: 'IT',
         location: 'Chennai',
       },
       {
-        name: 'TechNova Global',
-        industry: 'Cloud Computing',
+        name: 'Zenith Infotech',
+        industry: 'IT',
+        location: 'Coimbatore',
+      },
+      {
+        name: 'Cloudflare',
+        industry: 'IT',
         location: 'Bangalore',
-      },
-      {
-        name: 'Zenith Healthcare',
-        industry: 'Healthcare',
-        location: 'Hyderabad',
-      },
-      {
-        name: 'Apex Logistics',
-        industry: 'Supply Chain',
-        location: 'Mumbai',
       },
     ]);
 
-    const [abcCorp, techNova, zenith, apex] = companies;
+    const [iaaxin, tata, zenith, cloudflare] = companies;
 
     console.log('Creating sample leads...');
     const leads = await Lead.create([
       {
-        name: 'Ravi',
-        email: 'r@mail.com',
+        name: 'Prakash K',
+        email: 'prakash@mail.com',
         phone: '+91 9876543210',
         status: 'New',
         assignedTo: john._id,
-        company: abcCorp._id,
+        company: iaaxin._id,
       },
       {
-        name: 'Anita Sharma',
-        email: 'anita@technova.com',
+        name: 'Praveen S',
+        email: 'praveen@mail.com',
         phone: '+91 9812345678',
         status: 'Qualified',
         assignedTo: john._id,
-        company: techNova._id,
+        company: tata._id,
       },
       {
         name: 'Vikram Patel',
@@ -95,11 +95,11 @@ const seedData = async () => {
       },
       {
         name: 'Priya Sundaram',
-        email: 'priya@apex.com',
+        email: 'priya@cloud.com',
         phone: '+91 9834567890',
         status: 'Qualified',
         assignedTo: sarah._id,
-        company: apex._id,
+        company: cloudflare._id,
       },
       {
         name: 'Karthik Rao',
@@ -107,7 +107,7 @@ const seedData = async () => {
         phone: '+91 9845678901',
         status: 'Lost',
         assignedTo: john._id,
-        company: abcCorp._id,
+        company: iaaxin._id,
       },
       {
         name: 'Meera Nambiar',
@@ -123,7 +123,7 @@ const seedData = async () => {
         phone: '+91 9867890123',
         status: 'Contacted',
         assignedTo: sarah._id,
-        company: apex._id,
+        company: cloudflare._id,
       },
       {
         name: 'Deepa Menon',
@@ -131,7 +131,7 @@ const seedData = async () => {
         phone: '+91 9878901234',
         status: 'New',
         assignedTo: john._id,
-        company: techNova._id,
+        company: tata._id,
       },
     ]);
 
@@ -149,7 +149,7 @@ const seedData = async () => {
         status: 'Pending',
       },
       {
-        title: 'Send initial pricing proposal to Anita',
+        title: 'Send initial pricing proposal to Praveen',
         lead: leads[1]._id,
         assignedTo: john._id,
         dueDate: today,

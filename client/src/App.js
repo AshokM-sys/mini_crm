@@ -25,7 +25,7 @@ function App() {
               {/* Public Route */}
               <Route path="/login" element={<LoginPage />} />
 
-              {/* Protected Routes inside Persistent Layout */}
+              {/* Protected Routes inside Layout */}
               <Route element={<ProtectedRoute />}>
                 <Route element={<Layout />}>
                   <Route path="/" element={<DashboardPage />} />
