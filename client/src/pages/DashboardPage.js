@@ -100,7 +100,6 @@ const DashboardPage = () => {
           <CircularProgress size={36} />
         </Box>
       ) : (
-        /* Full-width 4 cards layout across 100% of body width */
         <Box
           sx={{
             display: 'grid',
@@ -149,7 +148,7 @@ const DashboardPage = () => {
                         mt: 1.5,
                       }}
                     >
-                      [ {card.value} ]
+                      {card.value}
                     </Typography>
                   </Box>
                   <Box
