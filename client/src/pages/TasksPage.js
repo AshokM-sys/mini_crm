@@ -162,7 +162,7 @@ const TasksPage = () => {
         </Button>
       </Box>
 
-      <Card sx={{ p: 2.5, border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+      <Card sx={{ p: { xs: 1.5, sm: 2.5 }, border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
         <TableContainer>
           <Table>
             <TableHead>
